@@ -33,7 +33,7 @@ function App() {
       2. Search menu will be in App.js
       3. DailyWeather Component
       */}
-      <DailyWeather {...weatherInfo} />
+      <DailyWeather {...weatherInfo} city={city} />
     </main>
   );
 }
