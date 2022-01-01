@@ -3,6 +3,7 @@ import CurrentWeather from "./CurrentWeather";
 import Loading from "./Loading";
 import SearchBar from "./SearchBar";
 import MultipleWeather from "./MultipleWeather";
+import ErrorBoundary from "./utils/ErrorBoundary";
 
 function App() {
   const [city, setCity] = useState("London");
@@ -36,9 +37,11 @@ function App() {
       2. Search menu will be in App.js
       3. DailyWeather Component
       */}
-      <SearchBar setCity={setCity} />
-      <CurrentWeather {...weatherInfo} city={city} />
-      <MultipleWeather city={city} coord={weatherInfo.coord} />
+      <ErrorBoundary>
+        <SearchBar setCity={setCity} />
+        <CurrentWeather {...weatherInfo} city={city} />
+        <MultipleWeather city={city} coord={weatherInfo.coord} />
+      </ErrorBoundary>
     </main>
   );
 }

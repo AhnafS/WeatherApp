@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import SingleWeather from "./SingleWeather";
 
-const MultipleWeather = ({ coord }) => {
+const MultipleWeather = ({ coord, city }) => {
   let [weathers, setWeathers] = useState({});
 
   const getWeathers = async () => {
@@ -12,7 +12,7 @@ const MultipleWeather = ({ coord }) => {
       const response = await fetch(url);
       const newWeathers = await response.json();
       setWeathers(newWeathers.daily);
-      console.log(weathers);
+      console.log(newWeathers);
     } catch (err) {
       console.log(err);
     }
@@ -23,8 +23,8 @@ const MultipleWeather = ({ coord }) => {
   }, [coord]);
 
   return (
-    <section className="h-2/4 w-2/4 bg-slate-500 mt-5 lg:mt-0">
-      <SingleWeather {...weathers[0]} />
+    <section className="h-1/2 w-2/4 bg-gray-50 mt-5 lg:mt-0">
+      <SingleWeather {...weathers[3]} city={city} />
     </section>
   );
 };
