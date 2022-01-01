@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import DailyWeather from "./DailyWeather";
+import CurrentWeather from "./CurrentWeather";
 import Loading from "./Loading";
+import SearchBar from "./SearchBar";
+import MultipleWeather from "./MultipleWeather";
 
 function App() {
   const [city, setCity] = useState("London");
@@ -26,14 +28,17 @@ function App() {
   if (loading) {
     return <Loading />;
   }
+
   return (
-    <main>
+    <main className="h-screen flex flex-col items-center justify-evenly">
       {/* 
       1. Fetch function will be set up in App.js
       2. Search menu will be in App.js
       3. DailyWeather Component
       */}
-      <DailyWeather {...weatherInfo} city={city} />
+      <SearchBar setCity={setCity} />
+      <CurrentWeather {...weatherInfo} city={city} />
+      <MultipleWeather city={city} coord={weatherInfo.coord} />
     </main>
   );
 }
