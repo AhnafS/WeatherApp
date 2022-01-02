@@ -1,13 +1,25 @@
 import { React, useState, useEffect } from "react";
-import getIcon from "./utils/getIcon";
 
 const CurrentWeather = ({ main, city, weather }) => {
   let [weatherIcon, setWeatherIcon] = useState(null);
   const { temp, pressure } = main;
   const [{ icon, description }] = weather;
 
+  const getIcon = async (icon) => {
+    try {
+      const response = await fetch(
+        `http://openweathermap.org/img/wn/${icon}.png`
+      );
+      const newIconBlob = await response.blob();
+      const newIconUrl = await URL.createObjectURL(newIconBlob);
+      setWeatherIcon(newIconUrl);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    getIcon(icon).then((newIcon) => setWeatherIcon(newIcon));
+    getIcon(icon);
   }, []);
 
   return (
@@ -23,7 +35,7 @@ const CurrentWeather = ({ main, city, weather }) => {
       </div>
       <div className="border-t-4 border-indigo-500 space-x-4 text-center lg:border-b-4 lg:border-t-0">
         <h3>pressure {pressure}</h3>
-        <h1>temperature: {Math.round(temp)}</h1>
+        <h1>temperature: {Math.round(temp)}F</h1>
       </div>
     </section>
   );

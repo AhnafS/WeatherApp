@@ -14,9 +14,8 @@ const SingleWeather = ({ dt, temp, pressure, weather, city }) => {
 
   console.log("Im here");
   return (
-    <section className="h-full rounded p-6 bg-white flex items-center justify-around flex-col text-xl shadow-lg p-5 text-center capitalize pt-px lg:w-2/4 hover:border-2">
+    <section className="h-full rounded p-6 bg-white flex items-center justify-around flex-col text-xl shadow-lg p-5 text-center capitalize pt-px lg:w-9/12 hover:border-2">
       <div className="border-b-4 border-indigo-500">
-        <h1>{city}</h1>
         <h2>
           {new Date(dt * 1000).toString().split(" ").slice(0, 4).join(" ")}
         </h2>
@@ -26,10 +25,9 @@ const SingleWeather = ({ dt, temp, pressure, weather, city }) => {
         <img src={icon} alt={city} />
         <h4>{description}</h4>
       </div>
-      <div className="flex  justify-between border-t-4 border-indigo-500 py-1 items-center">
+      <div className="flex  justify-between border-t-4 border-indigo-500 py-1 items-center space-x-2">
         <h3 className="mr-2">Max: {Math.round(temp.max)}</h3>
         <h3> Min: {Math.round(temp.min)}</h3>
-        <br />
         <h4>Pressure: {pressure} </h4>
       </div>
     </section>

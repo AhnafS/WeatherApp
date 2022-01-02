@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from "react";
 import SingleWeather from "./SingleWeather";
-import data from "./data";
 import Loading from "./Loading";
 
 const MultipleWeather = ({ coord, city }) => {

@@ -15,6 +15,7 @@ const SearchBar = ({ setCity }) => {
           type="text"
           onChange={(e) => setSearchInput(e.target.value)}
           placeholder="City Name"
+          className="text-center border-2 border-black rounded-md"
         />
       </form>
     </nav>
