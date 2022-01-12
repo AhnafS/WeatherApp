@@ -1,5 +1,5 @@
 # Live Demo
-https://ahnaf-weather-app.herokuapp.com/
+https://weawther-app-ahnaf.netlify.app/
 [![](https://i.imgur.com/Vbu0YCg.png)](http://https://i.imgur.com/Vbu0YCg.png)
 
 ## Description
